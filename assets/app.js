@@ -23,33 +23,37 @@ async function feeds() {
     h2.innerText = 'Latest Articles:';
     nav.appendChild(h2);
     
-    await feeds.forEach(async function(feed) {
-        const rssText = await fetchFeed(feed.url);
-        
-        const xmlDoc = parseFeed(rssText);
+    await parseFeeds(feeds); 
+    feeds.sort((a, b) => b.entry.date - a.entry.date);
 
+    for (let feed of feeds) populateContent(feed, nav);
+}
+
+async function parseFeeds(feeds) {
+    for (let feed of feeds) {
+        const rssText = await fetchFeed(feed.url);
+        const xmlDoc = parseFeed(rssText);
         const feedType = xmlDoc.children[0].tagName;
 
         const entry = {};
+        
         if (feedType == 'rss') {
             const latest = xmlDoc.getElementsByTagName('item')[0];
             entry.title = latest.getElementsByTagName('title')[0].textContent;
             entry.link = latest.getElementsByTagName('link')[0].textContent;
-            entry.date = latest.getElementsByTagName('pubDate')[0].textContent;
+            entry.date = new Date(latest.getElementsByTagName('pubDate')[0].textContent);
             entry.desc = latest.getElementsByTagName('description')[0].textContent;
         }
         else if (feedType == 'feed') {
             const latest = xmlDoc.getElementsByTagName('entry')[0];
             entry.title = latest.getElementsByTagName('title')[0].textContent;
             entry.link = latest.getElementsByTagName('link')[0].attributes.href.textContent;
-            entry.date = latest.getElementsByTagName('updated')[0].textContent;
+            entry.date = new Date(latest.getElementsByTagName('updated')[0].textContent);
             entry.desc = latest.getElementsByTagName('summary')[0].textContent;
         }
         
         feed.entry = entry;
-
-        populateContent(feed, nav);
-    })
+    }
 }
 
 function populateContent(entry, wrapper) {
