@@ -99,6 +99,17 @@ h1, article {
     margin-block-end: 2.4rem;
 }
 
+article header h3 {
+    display: inline-block;
+}
+article header time {
+    font-weight: bold;
+
+    &::after {
+        content: ' - ';
+    }
+}
+
 @media only screen and (max-width: 720px) {
     body {
         max-width: 100vw;
