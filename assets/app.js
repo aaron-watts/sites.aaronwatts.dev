@@ -57,10 +57,22 @@ async function parseFeeds(feeds) {
 }
 
 function populateContent(entry, wrapper) {
+    console.log(entry.entry);
     const article = document.createElement('article');
     article.setAttribute('aria-label', `${entry.feed} Latest`);
     const header = document.createElement('header');
     const h3 = document.createElement('h3');
+    const entryDate = {
+        dd: entry.entry.date.getDate(),
+        mm: entry.entry.date.getMonth() + 1,
+        yyyy: entry.entry.date.getFullYear()
+    };
+    if (entryDate.dd < 10) entryDate.dd = `0${entryDate.dd}`;
+    if (entryDate.mm < 10) entryDate.mm = `0${entryDate.mm}`;
+    const timeEl = document.createElement('time');
+    timeEl.setAttribute('datetime', `${entryDate.yyyy}-${entryDate.mm}-${entryDate.dd}`);
+    timeEl.innerText = `${entryDate.dd}/${entryDate.mm}/${entryDate.yyyy}`;
+    header.appendChild(timeEl);
     h3.innerText = entry.entry.title;
     header.appendChild(h3);
     const linkP = document.createElement('p');
