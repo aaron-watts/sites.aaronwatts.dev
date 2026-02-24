@@ -57,7 +57,6 @@ async function parseFeeds(feeds) {
 }
 
 function populateContent(entry, wrapper) {
-    console.log(entry.entry);
     const article = document.createElement('article');
     article.setAttribute('aria-label', `${entry.feed} Latest`);
     const header = document.createElement('header');
