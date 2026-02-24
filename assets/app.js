@@ -60,7 +60,6 @@ function populateContent(entry, wrapper) {
     const article = document.createElement('article');
     article.setAttribute('aria-label', `${entry.feed} Latest`);
     const header = document.createElement('header');
-    const h3 = document.createElement('h3');
     const entryDate = {
         dd: entry.entry.date.getDate(),
         mm: entry.entry.date.getMonth() + 1,
@@ -72,6 +71,7 @@ function populateContent(entry, wrapper) {
     timeEl.setAttribute('datetime', `${entryDate.yyyy}-${entryDate.mm}-${entryDate.dd}`);
     timeEl.innerText = `${entryDate.dd}/${entryDate.mm}/${entryDate.yyyy}`;
     header.appendChild(timeEl);
+    const h3 = document.createElement('h3');
     h3.innerText = entry.entry.title;
     header.appendChild(h3);
     const linkP = document.createElement('p');
