@@ -49,14 +49,14 @@ table {
 
 /* End Reset */
 :root {
-    --bg: #eee;
+    --bg: #f8f8f8;
     --text: #111;
 }
 
 @media (prefers-color-scheme: dark) {
     :root{
         --bg: #111;
-        --text: #eee;
+        --text: #f8f8f8;
     }
 }
 
