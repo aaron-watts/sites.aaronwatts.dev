@@ -14,7 +14,7 @@ async function feeds() {
         },
         {
             feed: 'Blog',
-            url: 'https://raw.githubusercontent.com/aaron-watts/blog.aaronwatts.dev/refs/heads/main/feed.xml'
+            url: 'https://raw.githubusercontent.com/aaron-watts/aaron-watts.github.io/refs/heads/main/docs/blog/feed.xml',
         }
     ];
 
