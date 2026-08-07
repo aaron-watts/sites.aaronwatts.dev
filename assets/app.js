@@ -6,15 +6,15 @@ async function feeds() {
     const feeds = [
         {
             feed: 'Guides',
-            url: 'https://raw.githubusercontent.com/aaron-watts/aaron-watts.github.io/refs/heads/main/docs/guides/feed.xml',
+            url: 'https://raw.githubusercontent.com/aaron-watts/aaron-watts.github.io/refs/heads/main/dist/guides/feed.xml',
         },
         {
             feed: 'Tech',
-            url: 'https://raw.githubusercontent.com/aaron-watts/aaron-watts.github.io/refs/heads/main/docs/tech/feed.xml',
+            url: 'https://raw.githubusercontent.com/aaron-watts/aaron-watts.github.io/refs/heads/main/dist/tech/feed.xml',
         },
         {
             feed: 'Blog',
-            url: 'https://raw.githubusercontent.com/aaron-watts/aaron-watts.github.io/refs/heads/main/docs/blog/feed.xml',
+            url: 'https://raw.githubusercontent.com/aaron-watts/aaron-watts.github.io/refs/heads/main/dist/blog/feed.xml',
         }
     ];
 
